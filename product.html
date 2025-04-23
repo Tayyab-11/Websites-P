@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | PEARL PERFECTIONS | Premium Beauty Supplements</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ce3e70',       // Main pink color
+                        primarylight: '#d97395',   // Lighter pink
+                        primarylighter: '#e499b2', // Lightest pink
+                        secondary: '#ffffff',      // White
+                        accent: '#48C9B0',         // Teal (kept for contrast)
+                        dark: '#2C3E50',           // Dark blue (trust)
+                        light: '#F8F9FA'           // Light gray
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #ce3e70 0%, #d97395 100%);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .nav-link:hover {
+            color: #ce3e70;
+        }
+        
+        .testimonial-card {
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+        }
+        
+        .sale-badge {
+            animation: pulse 2s infinite;
+            background-color: #ce3e70;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Cart sidebar styles */
+        .cart-sidebar {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .cart-sidebar.open {
+            transform: translateX(0);
+        }
+        
+        /* WhatsApp button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 999;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+        
+        /* Mobile menu animation */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+        
+        /* Footer styles */
+        .footer-links a:hover {
+            color: #ce3e70;
+            transform: translateX(5px);
+        }
+        
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: none;
+        }
+        
+        @media (max-width: 767px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            .desktop-menu {
+                display: none;
+            }
+        }
+        
+        /* Social media icons */
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        .social-icon:hover {
+            transform: translateY(-3px);
+        }
+
+        /* New pink button styles */
+        .btn-primary {
+            background-color: #ce3e70;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #b83763;
+        }
+        .btn-outline-primary {
+            border-color: #ce3e70;
+            color: #ce3e70;
+        }
+        .btn-outline-primary:hover {
+            background-color: #ce3e70;
+            color: white;
+        }
+
+        /* Logo styles */
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        .logo-img {
+            height: 90px;
+            width: auto;
+            margin-right: 10px;
+        }
+        .logo-text {
+            font-size: 1.15rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #ce3e70, #d97395);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Product WhatsApp button */
+        .product-whatsapp {
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 2;
+        }
+        
+        /* Category filter */
+        .category-filter {
+            scrollbar-width: thin;
+            scrollbar-color: #ce3e70 #f8f9fa;
+        }
+        
+        .category-filter::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .category-filter::-webkit-scrollbar-track {
+            background: #f8f9fa;
+        }
+        
+        .category-filter::-webkit-scrollbar-thumb {
+            background-color: #ce3e70;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/18001234567" class="whatsapp-button" target="_blank">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Top Bar - Hidden on mobile -->
+    <div class="bg-dark text-white py-2 px-4 text-sm hidden md:block">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-2 md:mb-0">
+                <a href="tel:+18001234567" class="hover:text-primarylight"><i class="fas fa-phone-alt mr-1"></i> +1 (800) 123-4567</a>
+                <a href="mailto:support@pearlperfections.com" class="ml-4 hover:text-primarylight"><i class="fas fa-envelope mr-1"></i> support@pearlperfections.com</a>
+            </div>
+            <div class="text-center md:text-left">
+                <span class="mr-4"><i class="fas fa-truck mr-1"></i> Free shipping on orders over $50</span>
+                <span><i class="fas fa-percentage mr-1"></i> 15% off first order: BEAUTY15</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html" class="logo-container">
+                    <!-- Replace with your actual logo path -->
+                    <img src="IMG-20250420-WA0003.jpg" alt="PEARL PERFECTIONS Logo" class="logo-img">
+                    <span class="logo-text">PEARL PERFECTIONS</span>
+                </a>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="desktop-menu hidden md:flex space-x-6 lg:space-x-8">
+                <a href="index.html" class="nav-link text-dark hover:text-primary font-medium">Home</a>
+                <a href="products.html" class="nav-link text-primary font-medium">Products</a>
+                <a href="index.html#benefits" class="nav-link text-dark hover:text-primary font-medium">Benefits</a>
+                <a href="index.html#testimonials" class="nav-link text-dark hover:text-primary font-medium">Testimonials</a>
+                <a href="about.html" class="nav-link text-dark hover:text-primary font-medium">About</a>
+                <a href="contact.html" class="nav-link text-dark hover:text-primary font-medium">Contact</a>
+            </div>
+            
+            <div class="flex items-center space-x-3 md:space-x-4">
+                <a href="#" class="text-dark hover:text-primary hidden sm:inline-block"><i class="fas fa-search text-lg"></i></a>
+                <a href="#" class="text-dark hover:text-primary hidden sm:inline-block"><i class="fas fa-user text-lg"></i></a>
+                <button class="text-dark hover:text-primary relative">
+                    <a href="cart.html" class="flex items-center">
+                        <i class="fas fa-shopping-cart text-lg"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </a>
+                </button>
+                <button id="mobile-menu-button" class="mobile-menu-btn md:hidden text-dark" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-white w-full px-4 shadow-lg">
+            <div class="py-2">
+                <a href="index.html" class="block py-2 hover:text-primary">Home</a>
+                <a href="products.html" class="block py-2 text-primary">Products</a>
+                <a href="index.html#benefits" class="block py-2 hover:text-primary">Benefits</a>
+                <a href="index.html#testimonials" class="block py-2 hover:text-primary">Testimonials</a>
+                <a href="about.html" class="block py-2 hover:text-primary">About</a>
+                <a href="contact.html" class="block py-2 hover:text-primary">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Categories Hero -->
+    <section class="py-8 md:py-12 bg-primary text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-bold mb-2">Premium Beauty Supplements</h1>
+                    <p class="opacity-90">Scientifically formulated for visible results</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <nav class="flex" aria-label="Breadcrumb">
+                        <ol class="inline-flex items-center space-x-1 md:space-x-2">
+                            <li class="inline-flex items-center">
+                                <a href="index.html" class="inline-flex items-center text-sm font-medium hover:underline">
+                                    <i class="fas fa-home mr-1"></i>
+                                    Home
+                                </a>
+                            </li>
+                            <li aria-current="page">
+                                <div class="flex items-center">
+                                    <i class="fas fa-chevron-right mx-2 text-gray-300 text-xs"></i>
+                                    <span class="text-sm font-medium">Products</span>
+                                </div>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Product Section -->
+    <section class="py-8 md:py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row">
+                <!-- Sidebar Filters -->
+                <div class="lg:w-1/4 mb-8 lg:mb-0 lg:pr-6">
+                    <div class="bg-light p-4 md:p-6 rounded-xl sticky top-4">
+                        <!-- Category Filter -->
+                        <div class="mb-6">
+                            <h3 class="font-bold text-lg mb-3">Categories</h3>
+                            <ul class="space-y-2">
+                                <li><a href="#" class="text-primary font-medium">All Products</a></li>
+                                <li><a href="#" class="text-gray-600 hover:text-primary">Skin Care</a></li>
+                                <li><a href="#" class="text-gray-600 hover:text-primary">Hair Care</a></li>
+                                <li><a href="#" class="text-gray-600 hover:text-primary">Anti-Aging</a></li>
+                                <li><a href="#" class="text-gray-600 hover:text-primary">Night Repair</a></li>
+                                <li><a href="#" class="text-gray-600 hover:text-primary">Detox & Glow</a></li>
+                                <li><a href="#" class="text-gray-600 hover:text-primary">Beauty Bundles</a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Price Filter -->
+                        <div class="mb-6">
+                            <h3 class="font-bold text-lg mb-3">Price Range</h3>
+                            <input type="range" min="0" max="100" value="50" class="w-full mb-2">
+                            <div class="flex justify-between text-sm text-gray-600">
+                                <span>$0</span>
+                                <span>$100+</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Benefits Filter -->
+                        <div class="mb-6">
+                            <h3 class="font-bold text-lg mb-3">Benefits</h3>
+                            <div class="space-y-2">
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="hydration" class="mr-2 rounded text-primary focus:ring-primary">
+                                    <label for="hydration" class="text-gray-600">Hydration</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="anti-aging" class="mr-2 rounded text-primary focus:ring-primary">
+                                    <label for="anti-aging" class="text-gray-600">Anti-Aging</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="acne" class="mr-2 rounded text-primary focus:ring-primary">
+                                    <label for="acne" class="text-gray-600">Acne Control</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="hair-growth" class="mr-2 rounded text-primary focus:ring-primary">
+                                    <label for="hair-growth" class="text-gray-600">Hair Growth</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="brightening" class="mr-2 rounded text-primary focus:ring-primary">
+                                    <label for="brightening" class="text-gray-600">Skin Brightening</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Popular Tags -->
+                        <div>
+                            <h3 class="font-bold text-lg mb-3">Popular Tags</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="#" class="bg-white text-xs px-3 py-1 rounded-full border border-gray-200 hover:bg-primary hover:text-white hover:border-primary">Bestseller</a>
+                                <a href="#" class="bg-white text-xs px-3 py-1 rounded-full border border-gray-200 hover:bg-primary hover:text-white hover:border-primary">New</a>
+                                <a href="#" class="bg-white text-xs px-3 py-1 rounded-full border border-gray-200 hover:bg-primary hover:text-white hover:border-primary">Sale</a>
+                                <a href="#" class="bg-white text-xs px-3 py-1 rounded-full border border-gray-200 hover:bg-primary hover:text-white hover:border-primary">Vegan</a>
+                                <a href="#" class="bg-white text-xs px-3 py-1 rounded-full border border-gray-200 hover:bg-primary hover:text-white hover:border-primary">Collagen</a>
+                                <a href="#" class="bg-white text-xs px-3 py-1 rounded-full border border-gray-200 hover:bg-primary hover:text-white hover:border-primary">Glow</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Main Product Grid -->
+                <div class="lg:w-3/4">
+                    <!-- Category Filter Tabs (Mobile) -->
+                    <div class="lg:hidden mb-6 overflow-x-auto">
+                        <div class="flex space-x-2 category-filter pb-2">
+                            <a href="#" class="whitespace-nowrap px-4 py-2 bg-primary text-white rounded-full text-sm font-medium">All</a>
+                            <a href="#" class="whitespace-nowrap px-4 py-2 bg-white rounded-full text-sm font-medium border border-gray-200 hover:bg-primary hover:text-white">Skin Care</a>
+                            <a href="#" class="whitespace-nowrap px-4 py-2 bg-white rounded-full text-sm font-medium border border-gray-200 hover:bg-primary hover:text-white">Hair Care</a>
+                            <a href="#" class="whitespace-nowrap px-4 py-2 bg-white rounded-full text-sm font-medium border border-gray-200 hover:bg-primary hover:text-white">Anti-Aging</a>
+                            <a href="#" class="whitespace-nowrap px-4 py-2 bg-white rounded-full text-sm font-medium border border-gray-200 hover:bg-primary hover:text-white">Night Repair</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Sort and Results -->
+                    <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+                        <p class="text-gray-600 mb-4 md:mb-0">Showing 12 of 24 products</p>
+                        <div class="flex items-center">
+                            <span class="text-gray-600 mr-2">Sort by:</span>
+                            <select class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary text-sm">
+                                <option>Featured</option>
+                                <option>Price: Low to High</option>
+                                <option>Price: High to Low</option>
+                                <option>Newest</option>
+                                <option>Best Selling</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Product 1 -->
+                        <div class="bg-white rounded-xl overflow-hidden shadow-md product-card transition duration-300 relative">
+                            <div class="product-whatsapp" onclick="window.open('https://wa.me/18001234567?text=I%20want%20to%20order%20Radiant%20Glow%20Collagen')">
+                                <i class="fab fa-whatsapp text-sm"></i>
+                            </div>
+                            <div class="relative">
+                                <img src="IMG-20250420-WA0001.jpg" 
+                                     alt="Radiant Glow Collagen" 
+                                     class="w-full h-48 object-cover">
+                                <div class="absolute top-4 right-4 sale-badge text-white text-xs font-bold px-2 py-1 rounded-full">BESTSELLER</div>
+                            </div>
+                            <div class="p-4 md:p-6">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-base md:text-lg font-bold text-dark">Radiant Glow Collagen</h3>
+                                    <span class="bg-primary text-white text-xs font-bold px-2 py-1 rounded">Skin Care</span>
+                                </div>
+                                <p class="text-gray-600 text-xs md:text-sm mb-3 md:mb-4">Marine collagen peptides with hyaluronic acid for youthful, hydrated skin.</p>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <span class="text-primary font-bold text-lg md:text-xl">$49.99</span>
+                                        <span class="text-gray-400 text-xs md:text-sm line-through ml-2">$59.99</span>
+                                    </div>
+                                    <button class="bg-primary text-white rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-90">
+                                        <i class="fas fa-plus text-sm md:text-base"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 2 -->
+                        <div class="bg-white rounded-xl overflow-hidden shadow-md product-card transition duration-300 relative">
+                            <div class="product-whatsapp" onclick="window.open('https://wa.me/18001234567?text=I%20want%20to%20order%20Luminous%20Skin%20Vitamins')">
+                                <i class="fab fa-whatsapp text-sm"></i>
+                            </div>
+                            <div class="relative">
+                                <img src="IMG-20250420-WA0002.jpg" 
+                                     alt="Luminous Skin Vitamins" 
+                                     class="w-full h-48 object-cover">
+                                <div class="absolute top-4 right-4 sale-badge text-white text-xs font-bold px-2 py-1 rounded-full">NEW</div>
+                            </div>
+                            <div class="p-4 md:p-6">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-base md:text-lg font-bold text-dark">Luminous Skin Vitamins</h3>
+                                    <span class="bg-primarylight text-white text-xs font-bold px-2 py-1 rounded">Anti-Aging</span>
+                                </div>
+                                <p class="text-gray-600 text-xs md:text-sm mb-3 md:mb-4">Essential vitamins and antioxidants for a clear, glowing complexion.</p>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <span class="text-primary font-bold text-lg md:text-xl">$39.99</span>
+                                    </div>
+                                    <button class="bg-primary text-white rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-90">
+                                        <i class="fas fa-plus text-sm md:text-base"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 3 -->
+                        <div class="bg-white rounded-xl overflow-hidden shadow-md product-card transition duration-300 relative">
+                            <div class="product-whatsapp" onclick="window.open('https://wa.me/18001234567?text=I%20want%20to%20order%20Silky%20Hair%20Elixir')">
+                                <i class="fab fa-whatsapp text-sm"></i>
+                            </div>
+                            <div class="relative">
+                                <img src="IMG-20250420-WA0004.jpg" 
+                                     alt="Silky Hair Elixir" 
+                                     class="w-full h-48 object-cover">
+                            </div>
+                            <div class="p-4 md:p-6">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-base md:text-lg font-bold text-dark">Silky Hair Elixir</h3>
+                                    <span class="bg-primarylighter text-white text-xs font-bold px-2 py-1 rounded">Hair Care</span>
+                                </div>
+                                <p class="text-gray-600 text-xs md:text-sm mb-3 md:mb-4">Biotin-rich formula for stronger, shinier, and faster-growing hair.</p>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <span class="text-primary font-bold text-lg md:text-xl">$44.99</span>
+                                        <span class="text-gray-400 text-xs md:text-sm line-through ml-2">$49.99</span>
+                                    </div>
+                                    <button class="bg-primary text-white rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-90">
+                                        <i class="fas fa-plus text-sm md:text-base"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 4 -->
+                        <div class="bg-white rounded-xl overflow-hidden shadow-md product-card transition duration-300 relative">
+                            <div class="product-whatsapp" onclick="window.open('https://wa.me/18001234567?text=I%20want%20to%20order%20Moonlight%20Beauty%20Serum')">
+                                <i class="fab fa-whatsapp text-sm"></i>
+                            </div>
+                            <div class="relative">
+                                <img src="IMG-20250420-WA0005.jpg" 
+                                     alt="Moonlight Beauty Serum" 
+                                     class="w-full h-48 object-cover">
+                            </div>
+                            <div class="p-4 md:p-6">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-base md:text-lg font-bold text-dark">Moonlight Beauty Serum</h3>
+                                    <span class="bg-primary text-white text-xs font-bold px-2 py-1 rounded">Night Repair</span>
+                                </div>
+                                <p class="text-gray-600 text-xs md:text-sm mb-3 md:mb-4">Nighttime supplement for skin repair and rejuvenation while you sleep.</p>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <span class="text-primary font-bold text-lg md:text-xl">$54.99</span>
+                                    </div>
+                                    <button class="bg-primary text-white rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-90">
+                                        <i class="fas fa-plus text-sm md:text-base"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 5 -->
+                        <div class="bg-white rounded-xl overflow-hidden shadow-md product-card transition duration-300 relative">
+                            <div class="product-whatsapp" onclick="window.open('https://wa.me/18001234567?text=I%20want%20to%20order%20NUTRI-GLUTA')">
+                                <i class="fab fa-whatsapp text-sm"></i>
+                            </div>
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" 
+                                     alt="NUTRI-GLUTA" 
+                                     class="w-full h-48 object-cover">
+                                <div class="absolute top-4 right-4 sale-badge text-white text-xs font-bold px-2 py-1 rounded-full">BESTSELLER</div>
+                            </div>
+                            <div class="p-4 md:p-6">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-base md:text-lg font-bold text-dark">NUTRI-GLUTA</h3>
+                                    <span class="bg-primary text-white text-xs font-bold px-2 py-1 rounded">Skin Care</span>
+                                </div>
+                                <p class="text-gray-600 text-xs md:text-sm mb-3 md:mb-4">L-Glutathione with Vitamin C for fair & healthy skin with radiant glow.</p>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <span class="text-primary font-bold text-lg md:text-xl">$59.99</span>
+                                    </div>
+                                    <button class="bg-primary text-white rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-90">
+                                        <i class="fas fa-plus text-sm md:text-base"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 6 -->
+                        <div class="bg-white rounded-xl overflow-hidden shadow-md product-card transition duration-300 relative">
+                            <div class="product-whatsapp" onclick="window.open('https://wa.me/18001234567?text=I%20want%20to%20order%20Hyaluronic%20Beauty%20Boost')">
+                                <i class="fab fa-whatsapp text-sm"></i>
+                            </div>
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1631729371254-42c2892fbc16?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                                     alt="Hyaluronic Beauty Boost" 
+                                     class="w-full h-48 object-cover">
+                            </div>
+                            <div class="p-4 md:p-6">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-base md:text-lg font-bold text-dark">Hyaluronic Beauty Boost</h3>
+                                    <span class="bg-primarylight text-white text-xs font-bold px-2 py-1 rounded">Hydration</span>
+                                </div>
+                                <p class="text-gray-600 text-xs md:text-sm mb-3 md:mb-4">Deep hydration supplement for plump, dewy skin from within.</p>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <span class="text-primary font-bold text-lg md:text-xl">$47.99</span>
+                                    </div>
+                                    <button class="bg-primary text-white rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-90">
+                                        <i class="fas fa-plus text-sm md:text-base"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <div class="flex justify-center mt-8 md:mt-12">
+                        <nav class="inline-flex rounded-md shadow">
+                            <a href="#" class="px-3 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                Previous
+                            </a>
+                            <a href="#" class="px-3 py-2 border-t border-b border-gray-300 bg-white text-sm font-medium text-primary">
+                                1
+                            </a>
+                            <a href="#" class="px-3 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                2
+                            </a>
+                            <a href="#" class="px-3 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                3
+                            </a>
+                            <a href="#" class="px-3 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                Next
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Featured Collection -->
+    <section class="py-12 md:py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-2xl md:text-3xl font-bold text-dark mb-4">Best Sellers</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our most loved beauty supplements by customers worldwide</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md product-card transition duration-300 relative">
+                    <div class="product-whatsapp" onclick="window.open('https://wa.me/18001234567?text=I%20want%20to%20order%20Radiant%20Glow%20Collagen')">
+                        <i class="fab fa-whatsapp text-sm"></i>
+                    </div>
+                    <div class="relative">
+                        <img src="IMG-20250420-WA0001.jpg" 
+                             alt="Radiant Glow Collagen" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4 sale-badge text-white text-xs font-bold px-2 py-1 rounded-full">BESTSELLER</div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-base md:text-lg font-bold text-dark">Radiant Glow Collagen</h3>
+                            <span class="bg-primary text-white text-xs font-bold px-2 py-1 rounded">Skin Care</span>
+                        </div>
+                        <p class="text-gray-600 text-xs md:text-sm mb-3 md:mb-4">Marine collagen peptides with hyaluronic acid for youthful, hydrated skin.</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-primary font-bold text-lg md:text-xl">$49.99</span>
+                                <span class="text-gray-400 text-xs md:text-sm line-through ml-2">$59.99</span>
+                            </div>
+                            <button class="bg-primary text-white rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-90">
+                                <i class="fas fa-plus text-sm md:text-base"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md product-card transition duration-300 relative">
+                    <div class="product-whatsapp" onclick="window.open('https://wa.me/18001234567?text=I%20want%20to%20order%20NUTRI-GLUTA')">
+                        <i class="fab fa-whatsapp text-sm"></i>
+                    </div>
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" 
+                             alt="NUTRI-GLUTA" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4 sale-badge text-white text-xs font-bold px-2 py-1 rounded-full">BESTSELLER</div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-base md:text-lg font-bold text-dark">NUTRI-GLUTA</h3>
+                            <span class="bg-primary text-white text-xs font-bold px-2 py-1 rounded">Skin Care</span>
