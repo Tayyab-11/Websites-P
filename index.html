@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEARL PERFECTIONS | Premium Beauty Supplements</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ce3e70',       // Main pink color
+                        primarylight: '#d97395',   // Lighter pink
+                        primarylighter: '#e499b2', // Lightest pink
+                        secondary: '#ffffff',      // White
+                        accent: '#48C9B0',         // Teal (kept for contrast)
+                        dark: '#2C3E50',           // Dark blue (trust)
+                        light: '#F8F9FA'           // Light gray
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #ce3e70 0%, #d97395 100%);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .nav-link:hover {
+            color: #ce3e70;
+        }
+        
+        .testimonial-card {
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+        }
+        
+        .sale-badge {
+            animation: pulse 2s infinite;
+            background-color: #ce3e70;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Cart sidebar styles */
+        .cart-sidebar {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .cart-sidebar.open {
+            transform: translateX(0);
+        }
+        
+        /* Page transition */
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        /* WhatsApp button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 999;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+        
+        /* Mobile menu animation */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+        
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            .whatsapp-button {
+                bottom: 30px;
+                left: 30px;
+                width: 70px;
+                height: 70px;
+            }
+        }
+
+        /* Footer styles */
+        .footer-links a:hover {
+            color: #ce3e70;
+            transform: translateX(5px);
+        }
+        
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: none;
+        }
+        
+        @media (max-width: 767px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            .desktop-menu {
+                display: none;
+            }
+        }
+        
+        /* Social media icons */
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        .social-icon:hover {
+            transform: translateY(-3px);
+        }
+
+        /* New pink button styles */
+        .btn-primary {
+            background-color: #ce3e70;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #b83763;
+        }
+        .btn-outline-primary {
+            border-color: #ce3e70;
+            color: #ce3e70;
+        }
+        .btn-outline-primary:hover {
+            background-color: #ce3e70;
+            color: white;
+        }
+
+        /* Logo styles */
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        .logo-img {
+            height: 90px;
+            width: auto;
+            margin-right: 10px;
+        }
+        .logo-text {
+            font-size: 1.15rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #ce3e70, #d97395);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Product WhatsApp button */
+        .product-whatsapp {
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 2;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/18001234567" class="whatsapp-button" target="_blank">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Top Bar - Hidden on mobile -->
+    <div class="bg-dark text-white py-2 px-4 text-sm hidden md:block">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-2 md:mb-0">
+                <a href="tel:+18001234567" class="hover:text-primarylight"><i class="fas fa-phone-alt mr-1"></i> +1 (800) 123-4567</a>
+                <a href="mailto:support@pearlperfections.com" class="ml-4 hover:text-primarylight"><i class="fas fa-envelope mr-1"></i> support@pearlperfections.com</a>
+            </div>
+            <div class="text-center md:text-left">
+                <span class="mr-4"><i class="fas fa-truck mr-1"></i> Free shipping on orders over $50</span>
+                <span><i class="fas fa-percentage mr-1"></i> 15% off first order: BEAUTY15</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="#" class="logo-container" onclick="showPage('home')">
+                    <img src="IMG-20250420-WA0003.jpg" alt="PEARL PERFECTIONS Logo" class="logo-img">
+                    <span class="logo-text">PEARL PERFECTIONS</span>
+                </a>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="desktop-menu hidden md:flex space-x-6 lg:space-x-8">
+                <a href="#" class="nav-link text-dark hover:text-primary font-medium" onclick="showPage('home')">Home</a>
+                <a href="product.html" class="nav-link text-dark hover:text-primary font-medium" onclick="showPage('products')">Products</a>
+                <a href="#benefits" class="nav-link text-dark hover:text-primary font-medium" onclick="showPage('home')">Benefits</a>
+                <a href="#testimonials" class="nav-link text-dark hover:text-primary font-medium" onclick="showPage('home')">Testimonials</a>
+                <a href="#" class="nav-link text-dark hover:text-primary font-medium" onclick="showPage('about')">About</a>
+                <a href="#" class="nav-link text-dark hover:text-primary font-medium" onclick="showPage('contact')">Contact</a>
+            </div>
+            
+            <div class="flex items-center space-x-3 md:space-x-4">
+                <a href="#" class="text-dark hover:text-primary hidden sm:inline-block"><i class="fas fa-search text-lg"></i></a>
+                <a href="#" class="text-dark hover:text-primary hidden sm:inline-block"><i class="fas fa-user text-lg"></i></a>
+                <button class="text-dark hover:text-primary relative" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart text-lg"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </button>
+                <button id="mobile-menu-button" class="mobile-menu-btn md:hidden text-dark" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-white w-full px-4 shadow-lg">
+            <div class="py-2">
+                <a href="#" class="block py-2 hover:text-primary" onclick="showPage('home')">Home</a>
+                <a href="product.html" class="block py-2 hover:text-primary" onclick="showPage('products')">Products</a>
+                <a href="#benefits" class="block py-2 hover:text-primary" onclick="showPage('home')">Benefits</a>
+                <a href="#testimonials" class="block py-2 hover:text-primary" onclick="showPage('home')">Testimonials</a>
+                <a href="about.html" class="block py-2 hover:text-primary">About</a>
+<a href="contact.html" class="block py-2 hover:text-primary">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="cart-sidebar fixed top-0 right-0 w-full sm:w-3/4 md:w-1/3 h-full bg-primary text-white shadow-2xl z-50 overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Your Cart</h2>
+                <button onclick="toggleCart()" class="text-white hover:text-gray-300">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div id="cart-items" class="mb-6">
+                <p class="text-center py-10">Your cart is empty</p>
+            </div>
+            
+            <div class="border-t border-white border-opacity-30 pt-4 mb-4">
+                <div class="flex justify-between mb-2">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal" class="font-bold">$0.00</span>
+                </div>
+                <div class="flex justify-between mb-2">
+                    <span>Shipping</span>
+                    <span class="font-bold">Calculated at checkout</span>
+                </div>
+                <div class="flex justify-between text-lg font-bold mb-6">
+                    <span>Total</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+                
+                <button class="w-full bg-white text-primary font-bold py-3 rounded-full hover:bg-opacity-90 transition mb-4" onclick="window.location.href='cart.html'">
+                    Proceed to Checkout
+                </button>
+                <button onclick="toggleCart()" class="w-full border-2 border-white text-white font-bold py-3 rounded-full hover:bg-white hover:text-primary transition">
+                    Continue Shopping
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="cart-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden" onclick="toggleCart()"></div>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page active">
+        <!-- Hero Section -->
+        <section class="hero-gradient text-white py-12 md:py-20">
+            <div class="container mx-auto px-4 flex flex-col-reverse md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">Radiant Beauty Starts  Starts Within</h1>
+                    <p class="text-lg md:text-xl mb-6 md:mb-8 opacity-90">Premium beauty supplements for glowing skin, luscious hair, and total body radiance. Scientifically formulated for visible results.</p>
+                    <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                        <a href="product.html" class="bg-white text-primary font-bold px-6 py-3 rounded-full hover:bg-opacity-90 transition text-center">Shop Now</a>
+                        <a href="product.html" class="border-2 border-white text-white font-bold px-6 py-3 rounded-full hover:bg-white hover:bg-opacity-10 transition text-center">Learn More</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center mb-6 md:mb-0">
+                    <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80" 
+                         alt="Woman with glowing skin" 
+                         class="rounded-xl shadow-2xl w-full max-w-md h-auto object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section id="benefits" class="py-12 md:py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-2xl md:text-3xl font-bold text-dark mb-4">Your Path to Radiant Beauty</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Our scientifically-backed formulas are designed to enhance your natural beauty from within.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                    <div class="bg-light p-6 md:p-8 rounded-xl text-center hover:shadow-lg transition">
+                        <div class="bg-primary text-white rounded-full w-14 h-14 md:w-16 md:h-16 flex items-center justify-center mx-auto mb-4 md:mb-6">
+                            <i class="fas fa-spa text-xl md:text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg md:text-xl font-bold text-dark mb-2 md:mb-3">Glowing Skin</h3>
+                        <p class="text-gray-600 text-sm md:text-base">Nourish your skin with collagen-boosting and antioxidant-rich supplements for a radiant complexion.</p>
+                    </div>
+                    
+                    <div class="bg-light p-6 md:p-8 rounded-xl text-center hover:shadow-lg transition">
+                        <div class="bg-primarylight text-white rounded-full w-14 h-14 md:w-16 md:h-16 flex items-center justify-center mx-auto mb-4 md:mb-6">
+                            <i class="fas fa-cut text-xl md:text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg md:text-xl font-bold text-dark mb-2 md:mb-3">Healthy Hair</h3>
+                        <p class="text-gray-600 text-sm md:text-base">Strengthen and revitalize your hair with essential vitamins and minerals for luscious locks.</p>
+                    </div>
+                    
+                    <div class="bg-light p-6 md:p-8 rounded-xl text-center hover:shadow-lg transition">
+                        <div class="bg-primarylighter text-white rounded-full w-14 h-14 md:w-16 md:h-16 flex items-center justify-center mx-auto mb-4 md:mb-6">
+                            <i class="fas fa-moon text-xl md:text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg md:text-xl font-bold text-dark mb-2 md:mb-3">Beauty Sleep</h3>
+                        <p class="text-gray-600 text-sm md:text-base">Enhance your nighttime routine with supplements that support skin repair and rejuvenation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section id="products" class="py-12 md:py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-2xl md:text-3xl font-bold text-dark mb-4">Our Premium Beauty Formulas</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Carefully crafted with clinically-proven ingredients for maximum effectiveness.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                    <!-- Product 1 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md product-card transition duration-300 relative">
+                        <div class="product-whatsapp" onclick="window.open('https://wa.me/18001234567?text=I%20want%20to%20order%20Radiant%20Glow%20Collagen')">
+                            <i class="fab fa-whatsapp text-sm"></i>
+                        </div>
+                        <div class="relative">
+                            <img src="IMG-20250420-WA0001.jpg" 
+                                 alt="Radiant Glow Collagen" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-4 right-4 sale-badge text-white text-xs font-bold px-2 py-1 rounded-full">BESTSELLER</div>
+                        </div>
+                        <div class="p-4 md:p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-base md:text-lg font-bold text-dark">Radiant Glow Collagen</h3>
+                                <span class="bg-primary text-white text-xs font-bold px-2 py-1 rounded">Skin Care</span>
+                            </div>
+                            <p class="text-gray-600 text-xs md:text-sm mb-3 md:mb-4">Marine collagen peptides with hyaluronic acid for youthful, hydrated skin.</p>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-primary font-bold text-lg md:text-xl">$49.99</span>
+                                    <span class="text-gray-400 text-xs md:text-sm line-through ml-2">$59.99</span>
+                                </div>
+                                <button class="bg-primary text-white rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-90" onclick="addToCart('Radiant Glow Collagen', 49.99, 'IMG-20250420-WA0001.jpg')">
+                                    <i class="fas fa-plus text-sm md:text-base"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md product-card transition duration-300 relative">
+                        <div class="product-whatsapp" onclick="window.open('https://wa.me/18001234567?text=I%20want%20to%20order%20Luminous%20Skin%20Vitamins')">
+                            <i class="fab fa-whatsapp text-sm"></i>
+                        </div>
+                        <div class="relative">
+                            <img src="IMG-20250420-WA0002.jpg" 
+                                 alt="Luminous Skin Vitamins" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-4 right-4 sale-badge text-white text-xs font-bold px-2 py-1 rounded-full">NEW</div>
+                        </div>
+                        <div class="p-4 md:p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-base md:text-lg font-bold text-dark">Luminous Skin Vitamins</h3>
+                                <span class="bg-primarylight text-white text-xs font-bold px-2 py-1 rounded">Anti-Aging</span>
+                            </div>
+                            <p class="text-gray-600 text-xs md:text-sm mb-3 md:mb-4">Essential vitamins and antioxidants for a clear, glowing complexion.</p>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-primary font-bold text-lg md:text-xl">$39.99</span>
+                                </div>
+                                <button class="bg-primary text-white rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-90" onclick="addToCart('Luminous Skin Vitamins', 39.99, 'IMG-20250420-WA0002.jpg')">
+                                    <i class="fas fa-plus text-sm md:text-base"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 3 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md product-card transition duration-300 relative">
+                        <div class="product-whatsapp" onclick="window.open('https://wa.me/18001234567?text=I%20want%20to%20order%20Silky%20Hair%20Elixir')">
+                            <i class="fab fa-whatsapp text-sm"></i>
+                        </div>
+                        <div class="relative">
+                            <img src="IMG-20250420-WA0004.jpg" 
+                                 alt="Silky Hair Elixir" 
+                                 class="w-full h-48 object-cover">
+                        </div>
+                        <div class="p-4 md:p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-base md:text-lg font-bold text-dark">Silky Hair Elixir</h3>
+                                <span class="bg-primarylighter text-white text-xs font-bold px-2 py-1 rounded">Hair Care</span>
+                            </div>
+                            <p class="text-gray-600 text-xs md:text-sm mb-3 md:mb-4">Biotin-rich formula for stronger, shinier, and faster-growing hair.</p>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-primary font-bold text-lg md:text-xl">$44.99</span>
+                                    <span class="text-gray-400 text-xs md:text-sm line-through ml-2">$49.99</span>
+                                </div>
+                                <button class="bg-primary text-white rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-90" onclick="addToCart('Silky Hair Elixir', 44.99, 'IMG-20250420-WA0004.jpg')">
+                                    <i class="fas fa-plus text-sm md:text-base"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 4 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md product-card transition duration-300 relative">
+                        <div class="product-whatsapp" onclick="window.open('https://wa.me/18001234567?text=I%20want%20to%20order%20Moonlight%20Beauty%20Serum')">
+                            <i class="fab fa-whatsapp text-sm"></i>
+                        </div>
+                        <div class="relative">
+                            <img src="IMG-20250420-WA0005.jpg" 
+                                 alt="Moonlight Beauty Serum" 
+                                 class="w-full h-48 object-cover">
+                        </div>
+                        <div class="p-4 md:p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-base md:text-lg font-bold text-dark">Moonlight Beauty Serum</h3>
+                                <span class="bg-primary text-white text-xs font-bold px-2 py-1 rounded">Night Repair</span>
+                            </div>
+                            <p class="text-gray-600 text-xs md:mb-4">Nighttime supplement for skin repair and rejuvenation while you sleep.</p>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-primary font-bold text-lg md:text-xl">$54.99</span>
+                                </div>
+                                <button class="bg-primary text-white rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-90" onclick="addToCart('Moonlight Beauty Serum', 54.99, 'IMG-20250420-WA0005.jpg')">
+                                    <i class="fas fa-plus text-sm md:text-base"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-8 md:mt-12">
+                    <a href="product.html" class="inline-block btn-outline-primary font-bold px-6 py-3 rounded-full hover:bg-primary hover:text-white transition">View All Products</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="py-12 md:py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwa CareerBuilderoto1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                             alt="Quality Ingredients" 
+                             class="rounded-xl shadow-lg w-full">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h2 class="text-xl md:text-2xl font-bold text-dark mb-6">Why PEARL PERFECTIONS Stands Out</h2>
+                        
+                        <div class="space-y-4 md:space-y-6">
+                            <div class="flex">
+                                <div class="bg-primary bg-opacity-10 text-primary rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center mr-3 md:mr-4">
+                                    <i class="fas fa-flask text-lg md:text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg md:text-xl font-bold text-dark mb-1 md:mb-2">Beauty Science</h3>
+                                    <p class="text-gray-600 text-sm md:text-base">Each product is developed by our team of dermatologists and nutritionists using clinically-studied beauty ingredients at optimal dosages.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="bg-primarylight bg-opacity-10 text-primarylight rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center mr-3 md:mr-4">
+                                    <i class="fas fa-leaf text-lg md:text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg md:text-xl font-bold text-dark mb-1 md:mb-2">Clean Beauty</h3>
+                                    <p class="text-gray-600 text-sm md:text-base">We use only clean, non-toxic ingredients that are free from harmful additives and artificial fillers.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="bg-primarylighter bg-opacity-10 text-primarylighter rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center mr-3 md:mr-4">
+                                    <i class="fas fa-certificate text-lg md:text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg md:text-xl font-bold text-dark mb-1 md:mb-2">Visible Results</h3>
+                                    <p class="text-gray-600 text-sm md:text-base">Our formulas are designed to deliver noticeable improvements in skin, hair, and overall radiance.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section id="testimonials" class="py-12 md:py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-2xl md:text-3xl font-bold text-dark mb-4">Real Results, Real People</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Thousands have transformed their beauty routine with our supplements.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                    <div class="testimonial-card p-6 md:p-8 rounded-xl shadow-md">
+                        <div class="flex items-center mb-4 md:mb-6">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" 
+                                 alt="Sarah J." 
+                                 class="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover mr-3 md:mr-4">
+                            <div>
+                                <h4 class="font-bold text-dark">Sarah J.</h4>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic mb-3 md:mb-4 text-sm md:text-base">"After just one month of using Radiant Glow Collagen, my skin has never looked better! The fine lines around my eyes have visibly reduced and my complexion is so much brighter."</p>
+                        <div class="text-xs md:text-sm text-gray-500">Verified Customer · 3 months ago</div>
+                    </div>
+                    
+                    <div class="testimonial-card p-6 md:p-8 rounded-xl shadow-md">
+                        <div class="flex items-center mb-4 md:mb-6">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" 
+                                 alt="Michael T." 
+                                 class="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover mr-3 md:mr-4">
+                            <div>
+                                <h4 class="font-bold text-dark">Michael T.</h4>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic mb-3 md:mb-4 text-sm md:text-base">"The Luminous Skin Vitamins have completely transformed my acne-prone skin. I've tried everything, but this is the first product that's actually worked for me."</p>
+                        <div class="text-xs md:text-sm text-gray-500">Verified Customer · 2 months ago</div>
+                    </div>
+                    
+                    <div class="testimonial-card p-6 md:p-8 rounded-xl shadow-md">
+                        <div class="flex items-center mb-4 md:mb-6">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" 
+                                 alt="Jennifer L." 
+                                 class="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover mr-3 md:mr-4">
+                            <div>
+                                <h4 class="font-bold text-dark">Jennifer L."</h4>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic mb-3 md:mb-4 text-sm md:text-base">"Silky Hair Elixir has transformed my thin, brittle hair in just 8 weeks. My hair is thicker, shinier, and growing so much faster than before!"</p>
+                        <div class="text-xs md:text-sm text-gray-500">Verified Customer · 1 month ago</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="py-12 md:py-16 bg-primary text-white">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Join Our Beauty Community</h2>
+                <p class="text-lg md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto opacity-90">Subscribe for exclusive offers, beauty tips, and 15% off your first order.</p>
+                
+                <form class="max-w-md mx-auto flex flex-col sm:flex-row">
+                    <input type="email" 
+                           placeholder="Your email address" 
+                           class="flex-grow px-4 py-3 rounded-t-lg sm:rounded-l-full sm:rounded-r-none focus:outline-none text-dark mb-2 sm:mb-0">
+                    <button type="submit" 
+                            class="bg-white text-primary font-bold px-6 py-3 rounded-b-lg sm:rounded-r-full sm:rounded-l-none hover:bg-opacity-90 transition">
+                        Subscribe
+                    </button>
+                </form>
+                
+                <p class="text-xs md:text-sm opacity-75 mt-3 md:mt-4">We respect your privacy. Unsubscribe at any time.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Products Page -->
+    <div id="products-page" class="page">
+        <section class="py-12 md:py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="mb-6 md:mb-8">
+                    <h1 class="text-2xl md:text-3xl font-bold text-dark mb-2">Our Complete Beauty Collection</h1>
+                    <p class="text-gray-600">Premium supplements for all your beauty needs</p>
+                </div>
+                
+                <div class="flex flex-col lg:flex-row mb-6 md:mb-8">
+                    <div class="lg:w-1/4 mb-6 lg:mb-0">
+                        <div class="bg-light p-4 md:p-6 rounded-xl sticky top-4">
+                            <h3 class="font-bold text-lg mb-3 md:mb-4">Categories</h3>
+                            <ul class="space-y-2">
+                                <li><a href="#" class="text-primary font-medium">All Products</a></li>
+                                <li><a href="#" class="text-gray-600 hover:text-primary">Skin Care</a></li>
+                                <li><a href="#" class="text-gray-600 hover:text-primary">Hair Care</a></li>
+                                <li><a href="#" class="text-gray-600 hover:text-primary">Anti-Aging</a></li>
+                                <li><a href="#" class="text-gray-600 hover:text-primary">Night Repair</a></li>
+                            </ul>
+                            
+                            <h3 class="font-bold text-lg mt-6 md:mt-8 mb-3 md:mb-4">Filter By</h3>
+                            <div class="mb-4">
+                                <h4 class="font-medium mb-2">Price</h4>
+                                <input type="range" min="0" max="100" value="50" class="w-full">
+                                <div class="flex justify-between text-sm text-gray-600 mt-1">
+                                    <span>$0</span>
+                                    <span>$100+</span>
+                                </div>
+                            </div>
+                            
+                            <h4 class="font-medium mb-2">Benefits</h4>
+                            <div class="space-y-2">
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="hydration" class="mr-2">
+                                    <label for="hydration" class="text-gray-600">Hydration</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="anti-aging" class="mr-2">
+                                    <label for="anti-aging" class="text-gray-600">Anti-Aging</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="acne" class="mr-2">
+                                    <label for="acne" class="text-gray-600">Acne Control</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="hair-growth" class="mr-2">
+                                    <label for="hair-growth" class="text-gray-600">Hair Growth</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-3/4 lg:pl-6">
+                        <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+                            <div class="mb-4 md:mb-0">
+                                <span class="text-gray-600">Showing 12 of 24 products</span>
+                            </div>
+                            <div>
+                                <select class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary text-sm md:text-base">
+                                    <option>Sort by: Featured</option>
+                                    <option>Sort by: Price Low to High</option>
+                                    <option>Sort by: Price High to Low</option>
+                                    <option>Sort by: Newest</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Product 1 -->
+                            <div class="bg-white rounded-xl overflow-hidden shadow-md product-card transition duration-300 relative">
+                                <div class="product-whatsapp" onclick="window.open('https://wa.me/18001234567?text=I%20want%20to%20order%20Radiant%20Glow%20Collagen')">
+                                    <i class="fab fa-whatsapp text-sm"></i>
+                                </div>
+                                <div class="relative">
+                                    <img src="IMG-20250420-WA0001.jpg" 
+                                         alt="Radiant Glow Collagen" 
+                                         class="w-full h-48 object-cover">
+                                    <div class="absolute top-4 right-4 sale-badge text-white text-xs font-bold px-2 py-1 rounded-full">BESTSELLER</div>
+                                </div>
+                                <div class="p-4 md:p-6">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="text-base md:text-lg font-bold text-dark">Radiant Glow Collagen</h3>
+                                        <span class="bg-primary text-white text-xs font-bold px-2 py-1 rounded">Skin Care</span>
+                                    </div>
+                                    <p class="text-gray-600 text-xs md:text-sm mb-3 md:mb-4">Marine collagen peptides with hyaluronic acid for youthful, hydrated skin.</p>
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <span class="text-primary font-bold text-lg md:text-xl">$49.99</span>
+                                            <span class="text-gray-400 text-xs md:text-sm line-through ml-2">$59.99</span>
+                                        </div>
+                                        <button class="bg-primary text-white rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-90" onclick="addToCart('Radiant Glow Collagen', 49.99, 'IMG-20250420-WA0001.jpg')">
+                                            <i class="fas fa-plus text-sm md:text-base"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Product 2 -->
+                            <div class="bg-white rounded-xl overflow-hidden shadow-md product-card transition duration-300 relative">
+                                <div class="product-whatsapp" onclick="window.open('https://wa.me/18001234567?text=I%20want%20to%20order%20Luminous%20Skin%20Vitamins')">
+                                    <i class="fab fa-whatsapp text-sm"></i>
+                                </div>
+                                <div class="relative">
+                                    <img src="IMG-20250420-WA0002.jpg" 
+                                         alt="Luminous Skin Vitamins" 
+                                         class="w-full h-48 object-cover">
+                                    <div class="absolute top-4 right-4 sale-badge text-white text-xs font-bold px-2 py-1 rounded-full">NEW</div>
+                                </div>
+                                <div class="p-4 md:p-6">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="text-base md:text-lg font-bold text-dark">Luminous Skin Vitamins</h3>
+                                        <span class="bg-primarylight text-white text-xs font-bold px-2 py-1 rounded">Anti-Aging</span>
+                                    </div>
+                                    <p class="text-gray-600 text-xs md:text-sm mb-3 md:mb-4">Essential vitamins and antioxidants for a clear, glowing complexion.</p>
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <span class="text-primary font-bold text-lg md:text-xl">$39.99</span>
+                                        </div>
+                                        <button class="bg-primary text-white rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-90" onclick="addToCart('Luminous Skin Vitamins', 39.99, 'IMG-20250420-WA0002.jpg')">
+                                            <i class="fas fa-plus text-sm md:text-base"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Product 3 -->
+                            <div class="bg-white rounded-xl overflow-hidden shadow-md product-card transition duration-300 relative">
+                                <div class="product-whatsapp" onclick="window.open('https://wa.me/18001234567?text=I%20want%20to%20order%20Silky%20Hair%20Elixir')">
+                                    <i class="fab fa-whatsapp text-sm"></i>
+                                </div>
+                                <div class="relative">
+                                    <img src="IMG-20250420-WA0004.jpg" 
+                                         alt="Silky Hair Elixir" 
+                                         class="w-full h-48 object-cover">
+                                </div>
+                                <div class="p-4 md:p-6">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="text-base md:text-lg font-bold text-dark">Silky Hair Elixir</h3>
+                                        <span class="bg-primarylighter text-white text-xs font-bold px-2 py-1 rounded">Hair Care</span>
+                                    </div>
+                                    <p class="text-gray-600 text-xs md:text-sm mb-3 md:mb-4">Biotin-rich formula for stronger, shinier, and faster-growing hair.</p>
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <span class="text-primary font-bold text-lg md:text-xl">$44.99</span>
+                                            <span class="text-gray-400 text-xs md:text-sm line-through ml-2">$49.99</span>
+                                        </div>
+                                        <button class="bg-primary text-white rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-90" onclick="addToCart('Silky Hair Elixir', 44.99, 'IMG-20250420-WA0004.jpg')">
+                                            <i class="fas fa-plus text-sm md:text-base"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Product 4 -->
+                            <div class="bg-white rounded-xl overflow-hidden shadow-md product-card transition duration-300 relative">
+                                <div class="product-whatsapp" onclick="window.open('https://wa.me/18001234567?text=I%20want%20to%20order%20Moonlight%20Beauty%20Serum')">
+                                    <i class="fab fa-whatsapp text-sm"></i>
+                                </div>
+                                <div class="relative">
+                                    <img src="IMG-20250420-WA0005.jpg" 
+                                         alt="Moonlight Beauty Serum" 
+                                         class="w-full h-48 object-cover">
+                                </div>
+                                <div class="p-4 md:p-6">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="text-base md:text-lg font-bold text-dark">Moonlight Beauty Serum</h3>
+                                        <span class="bg-primary text-white text-xs font-bold px-2 py-1 rounded">Night Repair</span>
+                                    </div>
+                                    <p class="text-gray-600 text-xs md:text-sm mb-3 md:mb-4">Nighttime supplement for skin repair and rejuvenation while you sleep.</p>
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <span class="text-primary font-bold text-lg md:text-xl">$54.99</span>
+                                        </div>
+                                        <button class="bg-primary text-white rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-90" onclick="addToCart('Moonlight Beauty Serum', 54.99, 'IMG-20250420-WA0005.jpg')">
+                                            <i class="fas fa-plus text-sm md:text-base"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-center mt-8 md:mt-12">
+                            <nav class="inline-flex rounded-md shadow">
+                                <a href="#" class="px-3 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                    Previous
+                                </a>
+                                <a href="#" class="px-3 py-2 border-t border-b border-gray-300 bg-white text-sm font-medium text-primary">
+                                    1
+                                </a>
+                                <a href="#" class="px-3 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                    2
+                                </a>
+                                <a href="#" class="px-3 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                    3
+                                </a>
+                                <a href="#" class="px-3 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                    Next
+                                </a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="about-page" class="page">
+        <section class="py-12 md:py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12 md:mb-16">
+                    <h1 class="text-2xl md:text-3xl font-bold text-dark mb-4">Our Story</h1>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Founded with a passion for beauty and scientific innovation</p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row items-center mb-12 md:mb-16">
+                    <div class="md:w-1/2 mb-8 md:mb-0 md:pr-10">
+                        <img src="https://images.unsplash.com/photo-1556228578-8c87e5460f4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                             alt="Our Team" 
+                             class="rounded-xl shadow-lg w-full">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h2 class="text-xl md:text-2xl font-bold text-dark mb-4">Who We Are</h2>
+                        <p class="text-gray-600 mb-4">PEARL PERFECTIONS was founded in 2018 by a team of dermatologists, nutritionists, and beauty enthusiasts who saw a gap in the market for supplements that truly enhance natural beauty from within.</p>
+                        <p class="text-gray-600 mb-4">Our mission is to create beauty supplements that actually work, backed by research and formulated with the highest quality ingredients. We believe in clean beauty, efficacy, and helping our customers achieve their beauty goals.</p>
+                        <p class="text-gray-600">Every product we create undergoes rigorous testing and is manufactured in FDA-approved facilities following Good Manufacturing Practices (GMP).</p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-8 md:mb-0 md:order-2 md:pl-10">
+                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f35b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1130&q=80" 
+                             alt="Our Process" 
+                             class="rounded-xl shadow-lg w-full">
+                    </div>
+                    <div class="md:w-1/2 md:order-1">
+                        <h2 class="text-xl md:text-2xl font-bold text-dark mb-4">Our Process</h2>
+                        <div class="space-y-4">
+                            <div class="flex">
+                                <div class="bg-primary bg-opacity-10 text-primary rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-1">
+                                    <span class="font-bold">1</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-dark mb-1">Research & Development</h3>
+                                    <p class="text-gray-600 text-sm">Our team analyzes clinical studies to identify effective beauty ingredients and optimal dosages.</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="bg-primary bg-opacity-10 text-primary rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-1">
+                                    <span class="font-bold">2</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-dark mb-1">Ingredient Sourcing</h3>
+                                    <p class="text-gray-600 text-sm">We source premium, non-GMO beauty ingredients from trusted suppliers worldwide.</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="bg-primary bg-opacity-10 text-primary rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-1">
+                                    <span class="font-bold">3</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-dark mb-1">Formulation</h3>
+                                    <p class="text-gray-600 text-sm">Our experts create synergistic blends for maximum beauty benefits.</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="bg-primary bg-opacity-10 text-primary rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-1">
+                                    <span class="font-bold">4</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-dark mb-1">Testing & Quality Control</h3>
+                                    <p class="text-gray-600 text-sm">Every batch undergoes third-party testing for purity and potency.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="py-12 md:py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-2xl md:text-3xl font-bold text-dark mb-4">Meet Our Beauty Experts</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">The passionate team behind PEARL PERFECTIONS' innovative formulas</p>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md text-center p-6">
+                        <img src="https://randomuser.me/api/portraits/women/43.jpg" 
+                             alt="Dr. Sarah Chen" 
+                             class="w-24 h-24 rounded-full object-cover mx-auto mb-4">
+                        <h3 class="text-lg font-bold text-dark mb-1">Dr. Sarah Chen</h3>
+                        <p class="text-primary text-sm mb-3">Chief Dermatologist</p>
+                        <p class="text-gray-600 text-sm">Board-certified dermatologist with 15 years of experience in cosmetic science.</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md text-center p-6">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" 
+                             alt="Michael Rodriguez" 
+                             class="w-24 h-24 rounded-full object-cover mx-auto mb-4">
+                        <h3 class="text-lg font-bold text-dark mb-1">Michael Rodriguez</h3>
+                        <p class="text-primary text-sm mb-3">Head of Research</p>
+                        <p class="text-gray-600 text-sm">Former pharmaceutical researcher specializing in botanical beauty extracts.</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md text-center p-6">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" 
+                             alt="Jennifer Park" 
+                             class="w-24 h-24 rounded-full object-cover mx-auto mb-4">
+                        <h3 class="text-lg font-bold text-dark mb-1">Jennifer Park</h3>
+                        <p class="text-primary text-sm mb-3">Product Development</p>
+                        <p class="text-gray-600 text-sm">Formulation expert with a background in nutricosmetics and beauty supplements.</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md text-center p-6">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" 
+                             alt="David Wilson" 
+                             class="w-24 h-24 rounded-full object-cover mx-auto mb-4">
+                        <h3 class="text-lg font-bold text-dark mb-1">David Wilson</h3>
+                        <p class="text-primary text-sm mb-3">Quality Assurance</p>
+                        <p class="text-gray-600 text-sm">Ensures all products meet strict beauty and quality standards.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact-page" class="page">
+        <section class="py-12 md:py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12 md:mb-16">
+                    <h1 class="text-2xl md:text-3xl font-bold text-dark mb-4">Get In Touch</h1>
+                    <p class="text-gray-600 max-w-2xl mx-auto">We'd love to hear from you! Reach out with questions, feedback, or wholesale inquiries.</p>
+                </div>
+                
+                <div class="flex flex-col lg:flex-row">
+                    <div class="lg:w-1/2 mb-8 lg:mb-0 lg:pr-10">
+                        <div class="bg-light rounded-xl p-6 md:p-8 shadow-md">
+                            <h2 class="text-xl font-bold text-dark mb-6">Contact Information</h2>
+                            
+                            <div class="space-y-6">
+                                <div class="flex">
+                                    <div class="bg-primary bg-opacity-10 text-primary rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-dark mb-1">Our Location</h3>
+                                        <p class="text-gray-600">123 Beauty Way<br>Los Angeles, CA 90015</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex">
+                                    <div class="bg-primary bg-opacity-10 text-primary rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-dark mb-1">Phone</h3>
+                                        <p class="text-gray-600">Customer Service: (800) 123-4567<br>Wholesale: (800) 765-4321</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex">
+                                    <div class="bg-primary bg-opacity-10 text-primary rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-dark mb-1">Email</h3>
+                                        <p class="text-gray-600">support@pearlperfections.com<br>wholesale@pearlperfections.com</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex">
+                                    <div class="bg-primary bg-opacity-10 text-primary rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-dark mb-1">Hours</h3>
+                                        <p class="text-gray-600">Monday-Friday: 9am-6pm PST<br>Saturday: 10am-4pm PST</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-1/2">
+                        <div class="bg-light rounded-xl p-6 md:p-8 shadow-md">
+                            <h2 class="text-xl font-bold text-dark mb-6">Send Us a Message</h2>
+                            <form>
+                                <div class="mb-4">
+                                    <label for="name" class="block text-gray-700 text-sm font-medium mb-2">Your Name</label>
+                                    <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <label for="email" class="block text-gray-700 text-sm font-medium mb-2">Email Address</label>
+                                    <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <label for="subject" class="block text-gray-700 text-sm font-medium mb-2">Subject</label>
+                                    <select id="subject" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary">
+                                        <option>General Inquiry</option>
+                                        <option>Product Questions</option>
+                                        <option>Wholesale Inquiry</option>
+                                        <option>Returns & Exchanges</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <label for="message" class="block text-gray-700 text-sm font-medium mb-2">Message</label>
+                                    <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                                </div>
+                                
+                                <button type="submit" class="w-full btn-primary font-bold py-3 rounded-full hover:bg-opacity-90 transition">
+                                    Send Message
+                                </button>
+                            </form>
+                            
+                            <!-- Social Media Icons -->
+                            <div class="mt-8 text-center">
+                                <h3 class="text-lg font-bold text-dark mb-4">Follow Us On Social Media</h3>
+                                <div class="flex justify-center space-x-6">
+                                    <a href="#" class="social-icon bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-primarylight transition">
+                                        <i class="fab fa-facebook-f text-xl"></i>
+                                    </a>
+                                    <a href="#" class="social-icon bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-primarylight transition">
+                                        <i class="fab fa-instagram text-xl"></i>
+                                    </a>
+                                    <a href="#" class="social-icon bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-primarylight transition">
+                                        <i class="fab fa-tiktok text-xl"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="py-12 md:py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="rounded-xl overflow-hidden shadow-lg">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.511306254025!2d-118.2708459240712!3d34.04141807315048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c7c9b8a9e0b1%3A0x8e2d7b8b9a9e0b2!2s123%20Beauty%20Way%2C%20Los%20Angeles%2C%20CA%2090015!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" 
+                            width="100%" 
+                            height="450" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="IMG-20250420-WA0003.jpg" alt="PEARL PERFECTIONS" class="h-10">
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-primary"><i class="fab fa-facebook-f text-xl"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-primary"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-primary"><i class="fab fa-tiktok text-xl"></i></a>
+                </div>
+            </div>
+            <div class="mt-6 text-center text-sm text-gray-500">
+                <p>© 2025 PEARL PERFECTIONS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Cart storage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function addToCart(name, price, image) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, image, quantity: 1 });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartDisplay();
+            toggleCart();
+        }
+
+        function updateCartDisplay() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const cartSubtotal = document.getElementById('cart-subtotal');
+            const cartTotal = document.getElementById('cart-total');
+
+            cartItemsContainer.innerHTML = '';
+            let subtotal = 0;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="text-center py-10">Your cart is empty</p>';
+            } else {
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    subtotal += itemTotal;
+
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'flex items-center mb-4';
+                    cartItem.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg mr-4">
+                        <div class="flex-grow">
+                            <h4 class="font-bold">${item.name}</h4>
+                            <p class="text-sm">$${item.price.toFixed(2)}</p>
+                            <div class="flex items-center mt-2">
+                                <button class="quantity-btn w-8 h-8 border border-white border-opacity-30 rounded-l-full flex items-center justify-center" onclick="updateQuantity('${item.name}', -1)">
+                                    <i class="fas fa-minus text-xs"></i>
+                                </button>
+                                <input type="text" value="${item.quantity}" class="w-12 h-8 border-t border-b border-white border-opacity-30 text-center bg-transparent text-white" readonly>
+                                <button class="quantity-btn w-8 h-8 border border-white border-opacity-30 rounded-r-full flex items-center justify-center" onclick="updateQuantity('${item.name}', 1)">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button class="text-white hover:text-gray-300 ml-4" onclick="removeFromCart('${item.name}')">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    `;
+                    cartItemsContainer.appendChild(cartItem);
+                });
+            }
+
+            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+            cartTotal.textContent = `$${subtotal.toFixed(2)}`;
+        }
+
+        function updateQuantity(name, change) {
+            const item = cart.find(item => item.name === name);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.name !== name);
+                }
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartDisplay();
+            }
+        }
+
+        function removeFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartDisplay();
+        }
+
+        // Initialize cart display
+        document.addEventListener('DOMContentLoaded', updateCartDisplay);
+
+        // Navigation and page switching
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(`${pageId}-page`).classList.add('active');
+            toggleMobileMenu(false);
+        }
+
+        function toggleCart() {
+            const cartSidebar = document.getElementById('cart-sidebar');
+            const cartOverlay = document.getElementById('cart-overlay');
+            cartSidebar.classList.toggle('open');
+            cartOverlay.classList.toggle('hidden');
+        }
+
+        function toggleMobileMenu(force = null) {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuButton = document.getElementById('mobile-menu-button');
+            if (force !== null) {
+                mobileMenu.classList.toggle('open', force);
+                menuButton.innerHTML = force ? '<i class="fas fa-times text-xl"></i>' : '<i class="fas fa-bars text-xl"></i>';
+            } else {
+                mobileMenu.classList.toggle('open');
+                menuButton.innerHTML = mobileMenu.classList.contains('open') ? '<i class="fas fa-times text-xl"></i>' : '<i class="fas fa-bars text-xl"></i>';
+            }
+        }
+    </script>
+</body>
+</html>
