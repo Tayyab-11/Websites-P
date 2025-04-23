@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | PEARL PERFECTIONS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ce3e70',
+                        primarylight: '#d97395',
+                        primarylighter: '#e499b2',
+                        secondary: '#ffffff',
+                        accent: '#48C9B0',
+                        dark: '#2C3E50',
+                        light: '#F8F9FA'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .nav-link:hover {
+            color: #ce3e70;
+        }
+        
+        .cart-sidebar {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .cart-sidebar.open {
+            transform: translateX(0);
+        }
+        
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 999;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+        
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        .social-icon:hover {
+            transform: translateY(-3px);
+        }
+        
+        .btn-primary {
+            background-color: #ce3e70;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #b83763;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        .logo-img {
+            height: 90px;
+            width: auto;
+            margin-right: 10px;
+        }
+        .logo-text {
+            font-size: 1.15rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #ce3e70, #d97395);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        @media (min-width: 768px) {
+            .whatsapp-button {
+                bottom: 30px;
+                left: 30px;
+                width: 70px;
+                height: 70px;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            .desktop-menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/18001234567" class="whatsapp-button" target="_blank">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Top Bar -->
+    <div class="bg-dark text-white py-2 px-4 text-sm hidden md:block">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-2 md:mb-0">
+                <a href="tel:+18001234567" class="hover:text-primarylight"><i class="fas fa-phone-alt mr-1"></i> +1 (800) 123-4567</a>
+                <a href="mailto:support@pearlperfections.com" class="ml-4 hover:text-primarylight"><i class="fas fa-envelope mr-1"></i> support@pearlperfections.com</a>
+            </div>
+            <div class="text-center md:text-left">
+                <span class="mr-4"><i class="fas fa-truck mr-1"></i> Free shipping on orders over $50</span>
+                <span><i class="fas fa-percentage mr-1"></i> 15% off first order: BEAUTY15</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html" class="logo-container">
+                    <img src="IMG-20250420-WA0003.jpg" alt="PEARL PERFECTIONS Logo" class="logo-img">
+                    <span class="logo-text">PEARL PERFECTIONS</span>
+                </a>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="desktop-menu hidden md:flex space-x-6 lg:space-x-8">
+                <a href="index.html" class="nav-link text-dark hover:text-primary font-medium">Home</a>
+                <a href="product.html" class="nav-link text-dark hover:text-primary font-medium">Products</a>
+                <a href="index.html#benefits" class="nav-link text-dark hover:text-primary font-medium">Benefits</a>
+                <a href="index.html#testimonials" class="nav-link text-dark hover:text-primary font-medium">Testimonials</a>
+                <a href="about.html" class="nav-link text-dark hover:text-primary font-medium">About</a>
+                <a href="contact.html" class="nav-link text-dark hover:text-primary font-medium">Contact</a>
+            </div>
+            
+            <div class="flex items-center space-x-3 md:space-x-4">
+                <a href="#" class="text-dark hover:text-primary hidden sm:inline-block"><i class="fas fa-search text-lg"></i></a>
+                <a href="#" class="text-dark hover:text-primary hidden sm:inline-block"><i class="fas fa-user text-lg"></i></a>
+                <button class="text-dark hover:text-primary relative" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart text-lg"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </button>
+                <button id="mobile-menu-button" class="mobile-menu-btn md:hidden text-dark" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-white w-full px-4 shadow-lg">
+            <div class="py-2">
+                <a href="index.html" class="block py-2 hover:text-primary">Home</a>
+                <a href="product.html" class="block py-2 hover:text-primary">Products</a>
+                <a href="index.html#benefits" class="block py-2 hover:text-primary">Benefits</a>
+                <a href="index.html#testimonials" class="block py-2 hover:text-primary">Testimonials</a>
+                <a href="about.html" class="block py-2 hover:text-primary">About</a>
+                <a href="contact.html" class="block py-2 hover:text-primary">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="cart-sidebar fixed top-0 right-0 w-full sm:w-3/4 md:w-1/3 h-full bg-primary text-white shadow-2xl z-50 overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Your Cart</h2>
+                <button onclick="toggleCart()" class="text-white hover:text-gray-300">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div id="cart-items" class="mb-6">
+                <p class="text-center py-10">Your cart is empty</p>
+            </div>
+            
+            <div class="border-t border-white border-opacity-30 pt-4 mb-4">
+                <div class="flex justify-between mb-2">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal" class="font-bold">$0.00</span>
+                </div>
+                <div class="flex justify-between mb-2">
+                    <span>Shipping</span>
+                    <span class="font-bold">Calculated at checkout</span>
+                </div>
+                <div class="flex justify-between text-lg font-bold mb-6">
+                    <span>Total</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+                
+                <button class="w-full bg-white text-primary font-bold py-3 rounded-full hover:bg-opacity-90 transition mb-4" onclick="window.location.href='cart.html'">
+                    Proceed to Checkout
+                </button>
+                <button onclick="toggleCart()" class="w-full border-2 border-white text-white font-bold py-3 rounded-full hover:bg-white hover:text-primary transition">
+                    Continue Shopping
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="cart-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden" onclick="toggleCart()"></div>
+
+    <!-- Contact Page Content -->
+    <section class="py-12 md:py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 md:mb-16">
+                <h1 class="text-2xl md:text-3xl font-bold text-dark mb-4">Get In Touch</h1>
+                <p class="text-gray-600 max-w-2xl mx-auto">We'd love to hear from you! Reach out with questions, feedback, or wholesale inquiries.</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 mb-8 lg:mb-0 lg:pr-10">
+                    <div class="bg-light rounded-xl p-6 md:p-8 shadow-md">
+                        <h2 class="text-xl font-bold text-dark mb-6">Contact Information</h2>
+                        
+                        <div class="space-y-6">
+                            <div class="flex">
+                                <div class="bg-primary bg-opacity-10 text-primary rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-dark mb-1">Our Location</h3>
+                                    <p class="text-gray-600">123 Beauty Way<br>Los Angeles, CA 90015</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="bg-primary bg-opacity-10 text-primary rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-dark mb-1">Phone</h3>
+                                    <p class="text-gray-600">Customer Service: (800) 123-4567<br>Wholesale: (800) 765-4321</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="bg-primary bg-opacity-10 text-primary rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-dark mb-1">Email</h3>
+                                    <p class="text-gray-600">support@pearlperfections.com<br>wholesale@pearlperfections.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="bg-primary bg-opacity-10 text-primary rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-dark mb-1">Hours</h3>
+                                    <p class="text-gray-600">Monday-Friday: 9am-6pm PST<br>Saturday: 10am-4pm PST</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-light rounded-xl p-6 md:p-8 shadow-md">
+                        <h2 class="text-xl font-bold text-dark mb-6">Send Us a Message</h2>
+                        <form>
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700 text-sm font-medium mb-2">Your Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-700 text-sm font-medium mb-2">Email Address</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="subject" class="block text-gray-700 text-sm font-medium mb-2">Subject</label>
+                                <select id="subject" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary">
+                                    <option>General Inquiry</option>
+                                    <option>Product Questions</option>
+                                    <option>Wholesale Inquiry</option>
+                                    <option>Returns & Exchanges</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-700 text-sm font-medium mb-2">Message</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full btn-primary font-bold py-3 rounded-full hover:bg-opacity-90 transition">
+                                Send Message
+                            </button>
+                        </form>
+                        
+                        <!-- Social Media Icons -->
+                        <div class="mt-8 text-center">
+                            <h3 class="text-lg font-bold text-dark mb-4">Follow Us On Social Media</h3>
+                            <div class="flex justify-center space-x-6">
+                                <a href="#" class="social-icon bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-primarylight transition">
+                                    <i class="fab fa-facebook-f text-xl"></i>
+                                </a>
+                                <a href="#" class="social-icon bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-primarylight transition">
+                                    <i class="fab fa-instagram text-xl"></i>
+                                </a>
+                                <a href="#" class="social-icon bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-primarylight transition">
+                                    <i class="fab fa-tiktok text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="py-12 md:py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="rounded-xl overflow-hidden shadow-lg">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.511306254025!2d-118.2708459240712!3d34.04141807315048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c7c9b8a9e0b1%3A0x8e2d7b8b9a9e0b2!2s123%20Beauty%20Way%2C%20Los%20Angeles%2C%20CA%2090015!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" 
+                        width="100%" 
+                        height="450" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="IMG-20250420-WA0003.jpg" alt="PEARL PERFECTIONS" class="h-10">
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-primary"><i class="fab fa-facebook-f text-xl"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-primary"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-primary"><i class="fab fa-tiktok text-xl"></i></a>
+                </div>
+            </div>
+            <div class="mt-6 text-center text-sm text-gray-500">
+                <p>© 2025 PEARL PERFECTIONS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Cart storage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function updateCartDisplay() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const cartSubtotal = document.getElementById('cart-subtotal');
+            const cartTotal = document.getElementById('cart-total');
+
+            cartItemsContainer.innerHTML = '';
+            let subtotal = 0;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="text-center py-10">Your cart is empty</p>';
+            } else {
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    subtotal += itemTotal;
+
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'flex items-center mb-4';
+                    cartItem.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg mr-4">
+                        <div class="flex-grow">
+                            <h4 class="font-bold">${item.name}</h4>
+                            <p class="text-sm">$${item.price.toFixed(2)}</p>
+                            <div class="flex items-center mt-2">
+                                <button class="quantity-btn w-8 h-8 border border-white border-opacity-30 rounded-l-full flex items-center justify-center" onclick="updateQuantity('${item.name}', -1)">
+                                    <i class="fas fa-minus text-xs"></i>
+                                </button>
+                                <input type="text" value="${item.quantity}" class="w-12 h-8 border-t border-b border-white border-opacity-30 text-center bg-transparent text-white" readonly>
+                                <button class="quantity-btn w-8 h-8 border border-white border-opacity-30 rounded-r-full flex items-center justify-center" onclick="updateQuantity('${item.name}', 1)">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button class="text-white hover:text-gray-300 ml-4" onclick="removeFromCart('${item.name}')">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    `;
+                    cartItemsContainer.appendChild(cartItem);
+                });
+            }
+
+            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+            cartTotal.textContent = `$${subtotal.toFixed(2)}`;
+        }
+
+        function updateQuantity(name, change) {
+            const item = cart.find(item => item.name === name);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.name !== name);
+                }
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartDisplay();
+            }
+        }
+
+        function removeFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartDisplay();
+        }
+
+        // Initialize cart display
+        document.addEventListener('DOMContentLoaded', updateCartDisplay);
+
+        function toggleCart() {
+            const cartSidebar = document.getElementById('cart-sidebar');
+            const cartOverlay = document.getElementById('cart-overlay');
+            cartSidebar.classList.toggle('open');
+            cartOverlay.classList.toggle('hidden');
+        }
+
+        function toggleMobileMenu(force = null) {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuButton = document.getElementById('mobile-menu-button');
+            if (force !== null) {
+                mobileMenu.classList.toggle('open', force);
+                menuButton.innerHTML = force ? '<i class="fas fa-times text-xl"></i>' : '<i class="fas fa-bars text-xl"></i>';
+            } else {
+                mobileMenu.classList.toggle('open');
+                menuButton.innerHTML = mobileMenu.classList.contains('open') ? '<i class="fas fa-times text-xl"></i>' : '<i class="fas fa-bars text-xl"></i>';
+            }
+        }
+    </script>
+</body>
+</html>
