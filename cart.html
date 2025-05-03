@@ -30,8 +30,6 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
         
         body {
-
-            
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
         }
@@ -105,7 +103,7 @@
             <div class="border-t border-white border-opacity-30 pt-4 mb-4">
                 <div class="flex justify-between mb-2">
                     <span>Subtotal</span>
-                    <span id="cart-subtotal" class="font-bold">Rs0.00</span>
+                    <span id="cart-subtotal" class="font-bold">Rs 0</span>
                 </div>
                 <div class="flex justify-between mb-2">
                     <span>Shipping</span>
@@ -113,7 +111,7 @@
                 </div>
                 <div class="flex justify-between text-lg font-bold mb-6">
                     <span>Total</span>
-                    <span id="cart-total">Rs0.00</span>
+                    <span id="cart-total">Rs 0</span>
                 </div>
                 
                 <button onclick="toggleCart()" class="w-full border-2 border-white text-white font-bold py-3 rounded-full hover:bg-white hover:text-primary transition">
@@ -186,7 +184,7 @@
                     <div class="border-t pt-4">
                         <div class="flex justify-between mb-2">
                             <span>Subtotal</span>
-                            <span id="order-subtotal" class="font-bold">Rs0.00</span>
+                            <span id="order-subtotal" class="font-bold">Rs 0</span>
                         </div>
                         <div class="flex justify-between mb-2">
                             <span>Shipping</span>
@@ -194,7 +192,7 @@
                         </div>
                         <div class="flex justify-between text-lg font-bold mb-6">
                             <span>Total</span>
-                            <span id="order-total" class="font-bold">Rs0.00</span>
+                            <span id="order-total" class="font-bold">Rs 0</span>
                         </div>
                     </div>
                 </div>
@@ -242,7 +240,7 @@
                         <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg mr-4">
                         <div class="flex-grow">
                             <h4 class="font-bold">${item.name}</h4>
-                            <p class="text-sm">Rs${item.price.toFixed(2)}</p>
+                            <p class="text-sm">Rs ${item.price.toLocaleString()}</p>
                             <div class="flex items-center mt-2">
                                 <button class="quantity-btn w-8 h-8 border border-white border-opacity-30 rounded-l-full flex items-center justify-center" onclick="updateQuantity('${item.name}', -1)">
                                     <i class="fas fa-minus text-xs"></i>
@@ -261,8 +259,8 @@
                 });
             }
 
-            cartSubtotal.textContent = `Rs${subtotal.toFixed(2)}`;
-            cartTotal.textContent = `Rs${subtotal.toFixed(2)}`;
+            cartSubtotal.textContent = `Rs ${subtotal.toLocaleString()}`;
+            cartTotal.textContent = `Rs ${subtotal.toLocaleString()}`;
         }
 
         function updateOrderDisplay() {
@@ -286,15 +284,15 @@
                         <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg mr-4">
                         <div class="flex-grow">
                             <h4 class="font-bold">${item.name}</h4>
-                            <p class="text-sm">Rs${item.price.toFixed(2)} x ${item.quantity}</p>
+                            <p class="text-sm">Rs ${item.price.toLocaleString()} x ${item.quantity}</p>
                         </div>
                     `;
                     orderItemsContainer.appendChild(orderItem);
                 });
             }
 
-            orderSubtotal.textContent = `Rs${subtotal.toFixed(2)}`;
-            orderTotal.textContent = `Rs${subtotal.toFixed(2)}`;
+            orderSubtotal.textContent = `Rs ${subtotal.toLocaleString()}`;
+            orderTotal.textContent = `Rs ${subtotal.toLocaleString()}`;
         }
 
         function updateQuantity(name, change) {
