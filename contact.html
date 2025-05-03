@@ -128,11 +128,41 @@
                 display: none;
             }
         }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 20px;
+            background: #F8F9FA;
+        }
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        .faq-question {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #2C3E50;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-answer {
+            display: none;
+            padding: 10px 0;
+            color: #666;
+        }
+        .faq-answer.active {
+            display: block;
+        }
+        .faq-toggle {
+            font-size: 1rem;
+            color: #ce3e70;
+        }
     </style>
 </head>
 <body class="bg-light">
     <!-- WhatsApp Button -->
-    <a href="https://wa.me/18001234567" class="whatsapp-button" target="_blank">
+    <a href="https://wa.me/+926285116" class="whatsapp-button" target="_blank">
         <i class="fab fa-whatsapp text-2xl"></i>
     </a>
 
@@ -140,8 +170,8 @@
     <div class="bg-dark text-white py-2 px-4 text-sm hidden md:block">
         <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
             <div class="mb-2 md:mb-0">
-                <a href="tel:+18001234567" class="hover:text-primarylight"><i class="fas fa-phone-alt mr-1"></i> +1 (800) 123-4567</a>
-                <a href="mailto:support@pearlperfections.com" class="ml-4 hover:text-primarylight"><i class="fas fa-envelope mr-1"></i> support@pearlperfections.com</a>
+                <a href="tel:+926285116" class="hover:text-primarylight"><i class="fas fa-phone-alt mr-1"></i> +92 6285116</a>
+                <a href="mailto:pearlperfections448@gmail.com" class="ml-4 hover:text-primarylight"><i class="fas fa-envelope mr-1"></i> pearlperfections448@gmail.com</a>
             </div>
             <div class="text-center md:text-left">
                 <span class="mr-4"><i class="fas fa-truck mr-1"></i> Free shipping on orders over $50</span>
@@ -172,7 +202,7 @@
             
             <div class="flex items-center space-x-3 md:space-x-4">
                 <a href="#" class="text-dark hover:text-primary hidden sm:inline-block"><i class="fas fa-search text-lg"></i></a>
-                <a href="#" class="text-dark hover:text-primary hidden sm:inline-block"><i class="fas fa-user text-lg"></i></a>
+                <a href="contact.html" class="text-dark hover:text-primary hidden sm:inline-block"><i class="fas fa-user text-lg"></i></a>
                 <button class="text-dark hover:text-primary relative" onclick="toggleCart()">
                     <i class="fas fa-shopping-cart text-lg"></i>
                     <span id="cart-count" class="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
@@ -213,7 +243,7 @@
             <div class="border-t border-white border-opacity-30 pt-4 mb-4">
                 <div class="flex justify-between mb-2">
                     <span>Subtotal</span>
-                    <span id="cart-subtotal" class="font-bold">$0.00</span>
+                    <span id="cart-subtotal" class="font-bold">Rs 0.00</span>
                 </div>
                 <div class="flex justify-between mb-2">
                     <span>Shipping</span>
@@ -221,7 +251,7 @@
                 </div>
                 <div class="flex justify-between text-lg font-bold mb-6">
                     <span>Total</span>
-                    <span id="cart-total">$0.00</span>
+                    <span id="cart-total">Rs 0.00</span>
                 </div>
                 
                 <button class="w-full bg-white text-primary font-bold py-3 rounded-full hover:bg-opacity-90 transition mb-4" onclick="window.location.href='cart.html'">
@@ -251,21 +281,11 @@
                         <div class="space-y-6">
                             <div class="flex">
                                 <div class="bg-primary bg-opacity-10 text-primary rounded-full w-12 h-12 flex items-center justify-center mr-4">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold text-dark mb-1">Our Location</h3>
-                                    <p class="text-gray-600">123 Beauty Way<br>Los Angeles, CA 90015</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex">
-                                <div class="bg-primary bg-opacity-10 text-primary rounded-full w-12 h-12 flex items-center justify-center mr-4">
                                     <i class="fas fa-phone-alt"></i>
                                 </div>
                                 <div>
                                     <h3 class="font-bold text-dark mb-1">Phone</h3>
-                                    <p class="text-gray-600">Customer Service: (800) 123-4567<br>Wholesale: (800) 765-4321</p>
+                                    <p class="text-gray-600">Customer Service: +92 6285116<br>Wholesale: +92 6285116</p>
                                 </div>
                             </div>
                             
@@ -275,7 +295,7 @@
                                 </div>
                                 <div>
                                     <h3 class="font-bold text-dark mb-1">Email</h3>
-                                    <p class="text-gray-600">support@pearlperfections.com<br>wholesale@pearlperfections.com</p>
+                                    <p class="text-gray-600">pearlperfections448@gmail.com</p>
                                 </div>
                             </div>
                             
@@ -331,13 +351,13 @@
                         <div class="mt-8 text-center">
                             <h3 class="text-lg font-bold text-dark mb-4">Follow Us On Social Media</h3>
                             <div class="flex justify-center space-x-6">
-                                <a href="#" class="social-icon bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-primarylight transition">
+                                <a href="https://www.facebook.com/share/1C2kKCPiXH/" class="social-icon bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-primarylight transition">
                                     <i class="fab fa-facebook-f text-xl"></i>
                                 </a>
-                                <a href="#" class="social-icon bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-primarylight transition">
+                                <a href="https://www.instagram.com/invites/contact/?igsh=zai0hb6vgzl&utm_content=vqivbme" class="social-icon bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-primarylight transition">
                                     <i class="fab fa-instagram text-xl"></i>
                                 </a>
-                                <a href="#" class="social-icon bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-primarylight transition">
+                                <a href="https://www.tiktok.com/@pearlperfections4?_t=ZS-8vm5i0LssL2&_r=1" class="social-icon bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-primarylight transition">
                                     <i class="fab fa-tiktok text-xl"></i>
                                 </a>
                             </div>
@@ -362,6 +382,65 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-dark mb-4">Frequently Asked Questions</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Got questions? We've got answers.</p>
+            </div>
+            <div class="max-w-3xl mx-auto">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What happens if there is any complaint regarding the product?</span>
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        There is 24/7 support on WhatsApp for help and to guide you on how to use the product.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long does it take to get my order?</span>
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        Delivery time depends on your location.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Will you ship overseas?</span>
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, we ship internationally.
+                    </div>
+                </div>
+                <div class="text-center mt-8">
+                    <p class="text-gray-600">More questions? <a href="https://wa.me/+926285116" class="text-primary hover:underline">Contact us through WhatsApp</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-12 md:py-16 bg-primary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Join Our Beauty Community</h2>
+            <p class="text-lg md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto opacity-90">Subscribe for exclusive offers, beauty tips, and 15% off your first order.</p>
+            
+            <form class="max-w-md mx-auto flex flex-col sm:flex-row">
+                <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-t-lg sm:rounded-l-full sm:rounded-r-none focus:outline-none text-dark mb-2 sm:mb-0">
+                <button type="submit" class="bg-white text-primary font-bold px-6 py-3 rounded-b-lg sm:rounded-r-full sm:rounded-l-none hover:bg-opacity-90 transition">
+                    Subscribe
+                </button>
+            </form>
+            
+            <p class="text-xs md:text-sm opacity-75 mt-3 md:mt-4">We respect your privacy. Unsubscribe at any time.</p>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bg-white border-t border-gray-200 py-8">
         <div class="container mx-auto px-4">
@@ -370,9 +449,9 @@
                     <img src="IMG-20250420-WA0003.jpg" alt="PEARL PERFECTIONS" class="h-10">
                 </div>
                 <div class="flex space-x-6">
-                    <a href="#" class="text-gray-600 hover:text-primary"><i class="fab fa-facebook-f text-xl"></i></a>
-                    <a href="#" class="text-gray-600 hover:text-primary"><i class="fab fa-instagram text-xl"></i></a>
-                    <a href="#" class="text-gray-600 hover:text-primary"><i class="fab fa-tiktok text-xl"></i></a>
+                    <a href="https://www.facebook.com/share/1C2kKCPiXH/" class="text-gray-600 hover:text-primary"><i class="fab fa-facebook-f text-xl"></i></a>
+                    <a href="https://www.instagram.com/invites/contact/?igsh=zai0hb6vgzl&utm_content=vqivbme" class="text-gray-600 hover:text-primary"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="https://www.tiktok.com/@pearlperfections4?_t=ZS-8vm5i0LssL2&_r=1" class="text-gray-600 hover:text-primary"><i class="fab fa-tiktok text-xl"></i></a>
                 </div>
             </div>
             <div class="mt-6 text-center text-sm text-gray-500">
@@ -407,7 +486,7 @@
                         <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg mr-4">
                         <div class="flex-grow">
                             <h4 class="font-bold">${item.name}</h4>
-                            <p class="text-sm">$${item.price.toFixed(2)}</p>
+                            <p class="text-sm">Rs ${item.price.toFixed(2)}</p>
                             <div class="flex items-center mt-2">
                                 <button class="quantity-btn w-8 h-8 border border-white border-opacity-30 rounded-l-full flex items-center justify-center" onclick="updateQuantity('${item.name}', -1)">
                                     <i class="fas fa-minus text-xs"></i>
@@ -427,8 +506,8 @@
             }
 
             cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-            cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
-            cartTotal.textContent = `$${subtotal.toFixed(2)}`;
+            cartSubtotal.textContent = `Rs ${subtotal.toFixed(2)}`;
+            cartTotal.textContent = `Rs ${subtotal.toFixed(2)}`;
         }
 
         function updateQuantity(name, change) {
@@ -449,8 +528,21 @@
             updateCartDisplay();
         }
 
-        // Initialize cart display
-        document.addEventListener('DOMContentLoaded', updateCartDisplay);
+        // Initialize cart display and FAQ toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartDisplay();
+            
+            // FAQ toggle functionality
+            document.querySelectorAll('.faq-question').forEach(item => {
+                item.addEventListener('click', () => {
+                    const answer = item.nextElementSibling;
+                    const toggle = item.querySelector('.faq-toggle i');
+                    answer.classList.togglelogin('active');
+                    toggle.classList.toggle('fa-chevron-down');
+                    toggle.classList.toggle('fa-chevron-up');
+                });
+            });
+        });
 
         function toggleCart() {
             const cartSidebar = document.getElementById('cart-sidebar');
