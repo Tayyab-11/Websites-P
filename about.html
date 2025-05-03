@@ -111,12 +111,30 @@
             -webkit-text-fill-color: transparent;
         }
         
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.open .faq-answer {
+            max-height: 200px;
+            padding: 1rem;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
         @media (min-width: 768px) {
             .whatsapp-button {
                 bottom: 30px;
                 left: 30px;
                 width: 70px;
                 height: 70px;
+            }
+            .social-icon i {
+                font-size: 1.5rem;
             }
         }
         
@@ -126,6 +144,32 @@
             }
             .desktop-menu {
                 display: none;
+            }
+            .faq-item {
+                padding: 0.5rem;
+            }
+            .faq-answer {
+                font-size: 0.875rem;
+            }
+            .community-section {
+                padding: 1rem;
+            }
+            .social-icon i {
+                font-size: 1.25rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .community-section input {
+                font-size: 0.875rem;
+                padding: 0.5rem 1rem;
+            }
+            .community-section button {
+                font-size: 0.875rem;
+                padding: 0.5rem 1.5rem;
+            }
+            .social-icon i {
+                font-size: 1rem;
             }
         }
     </style>
@@ -172,7 +216,7 @@
             
             <div class="flex items-center space-x-3 md:space-x-4">
                 <a href="#" class="text-dark hover:text-primary hidden sm:inline-block"><i class="fas fa-search text-lg"></i></a>
-                <a href="#" class="text-dark hover:text-primary hidden sm:inline-block"><i class="fas fa-user text-lg"></i></a>
+                <a href="contact.html" class="text-dark hover:text-primary hidden sm:inline-block"><i class="fas fa-user text-lg"></i></a>
                 <button class="text-dark hover:text-primary relative" onclick="toggleCart()">
                     <i class="fas fa-shopping-cart text-lg"></i>
                     <span id="cart-count" class="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
@@ -245,9 +289,9 @@
             
             <div class="flex flex-col md:flex-row items-center mb-12 md:mb-16">
                 <div class="md:w-1/2 mb-8 md:mb-0 md:pr-10">
-                    <img src="https://images.unsplash.com/photo-1556228578-8c87e5460f4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
-                         alt="Our Team" 
-                         class="rounded-xl shadow-lg w-full">
+                    <img src="https://images.pexels.com/photos/3764013/pexels-photo-3764013.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                         alt="Beauty Team Collaboration" 
+                         class="rounded-xl shadow-lg w-full object-cover h-64 md:h-96">
                 </div>
                 <div class="md:w-1/2">
                     <h2 class="text-xl md:text-2xl font-bold text-dark mb-4">Who We Are</h2>
@@ -259,9 +303,9 @@
             
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-8 md:mb-0 md:order-2 md:pl-10">
-                    <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f35b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1130&q=80" 
-                         alt="Our Process" 
-                         class="rounded-xl shadow-lg w-full">
+                    <img src="https://images.pexels.com/photos/5996982/pexels-photo-5996982.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                         alt="Supplement Formulation Process" 
+                         class="rounded-xl shadow-lg w-full object-cover h-64 md:h-96">
                 </div>
                 <div class="md:w-1/2 md:order-1">
                     <h2 class="text-xl md:text-2xl font-bold text-dark mb-4">Our Process</h2>
@@ -308,49 +352,90 @@
         </div>
     </section>
 
-    <!-- Team Section -->
-    <section class="py-12 md:py-16 bg-gray-50">
+    <!-- FAQs Section -->
+    <section class="py-12 md:py-16 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12 md:mb-16">
-                <h2 class="text-2xl md:text-3xl font-bold text-dark mb-4">Meet Our Beauty Experts</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">The passionate team behind PEARL PERFECTIONS' innovative formulas</p>
+                <h2 class="text-2xl md:text-3xl font-bold text-dark mb-4">Frequently Asked Questions</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Find answers to common questions about our beauty supplements</p>
             </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-                <div class="bg-white rounded-xl overflow-hidden shadow-md text-center p-6">
-                    <img src="https://randomuser.me/api/portraits/women/43.jpg" 
-                         alt="Dr. Sarah Chen" 
-                         class="w-24 h-24 rounded-full object-cover mx-auto mb-4">
-                    <h3 class="text-lg font-bold text-dark mb-1">Dr. Sarah Chen</h3>
-                    <p class="text-primary text-sm mb-3">Chief Dermatologist</p>
-                    <p class="text-gray-600 text-sm">Board-certified dermatologist with 15 years of experience in cosmetic science.</p>
+            <div class="space-y-4 max-w-3xl mx-auto">
+                <div class="faq-item bg-gray-50 rounded-xl p-4 cursor-pointer" onclick="toggleFAQ(this)">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-bold text-dark">Are your products safe to use?</h3>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </div>
+                    <div class="faq-answer text-gray-600 mt-2">
+                        <p>Yes, all our products are manufactured in FDA-approved facilities following Good Manufacturing Practices (GMP). Each batch undergoes third-party testing for purity and potency.</p>
+                    </div>
                 </div>
                 
-                <div class="bg-white rounded-xl overflow-hidden shadow-md text-center p-6">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" 
-                         alt="Michael Rodriguez" 
-                         class="w-24 h-24 rounded-full object-cover mx-auto mb-4">
-                    <h3 class="text-lg font-bold text-dark mb-1">Michael Rodriguez</h3>
-                    <p class="text-primary text-sm mb-3">Head of Research</p>
-                    <p class="text-gray-600 text-sm">Former pharmaceutical researcher specializing in botanical beauty extracts.</p>
+                <div class="faq-item bg-gray-50 rounded-xl p-4 cursor-pointer" onclick="toggleFAQ(this)">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-bold text-dark">How long does it take to see results?</h3>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </div>
+                    <div class="faq-answer text-gray-600 mt-2">
+                        <p>Results vary depending on the individual, but most customers report noticeable improvements in skin, hair, and nails within 4-6 weeks of consistent use.</p>
+                    </div>
                 </div>
                 
-                <div class="bg-white rounded-xl overflow-hidden shadow-md text-center p-6">
-                    <img src="https://randomuser.me/api/portraits/women/65.jpg" 
-                         alt="Jennifer Park" 
-                         class="w-24 h-24 rounded-full object-cover mx-auto mb-4">
-                    <h3 class="text-lg font-bold text-dark mb-1">Jennifer Park</h3>
-                    <p class="text-primary text-sm mb-3">Product Development</p>
-                    <p class="text-gray-600 text-sm">Formulation expert with a background in nutricosmetics and beauty supplements.</p>
+                <div class="faq-item bg-gray-50 rounded-xl p-4 cursor-pointer" onclick="toggleFAQ(this)">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-bold text-dark">Are your supplements vegan?</h3>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </div>
+                    <div class="faq-answer text-gray-600 mt-2">
+                        <p>Most of our supplements are vegan-friendly. Please check individual product pages for specific ingredient information.</p>
+                    </div>
                 </div>
                 
-                <div class="bg-white rounded-xl overflow-hidden shadow-md text-center p-6">
-                    <img src="https://randomuser.me/api/portraits/men/75.jpg" 
-                         alt="David Wilson" 
-                         class="w-24 h-24 rounded-full object-cover mx-auto mb-4">
-                    <h3 class="text-lg font-bold text-dark mb-1">David Wilson</h3>
-                    <p class="text-primary text-sm mb-3">Quality Assurance</p>
-                    <p class="text-gray-600 text-sm">Ensures all products meet strict beauty and quality standards.</p>
+                <div class="faq-item bg-gray-50 rounded-xl p-4 cursor-pointer" onclick="toggleFAQ(this)">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-bold text-dark">Do you ship internationally?</h3>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </div>
+                    <div class="faq-answer text-gray-600 mt-2">
+                        <p>Yes, we offer international shipping to most countries. Shipping costs and delivery times vary by location.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Our Beauty Community Section -->
+    <section class="py-12 md:py-16 bg-primary text-white community-section">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4">Join Our Beauty Community</h2>
+                <p class="max-w-2xl mx-auto">Connect with us for exclusive offers, beauty tips, and community updates</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8">
+                <div class="w-full md:w-1/2 max-w-md">
+                    <div class="relative">
+                        <input type="email" placeholder="Enter your email" 
+                               class="w-full py-3 px-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primarylighter text-gray-600">
+                        <button class="absolute right-2 top-1/2 -translate-y-1/2 bg-white text-primary font-bold py-2 px-6 rounded-full hover:bg-primarylighter hover:text-white transition">
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="flex space-x-4">
+                    <a href="https://www.facebook.com/share/1C2kKCPiXH/" target="_blank" 
+                       class="social-icon hover:text-primarylighter">
+                        <i class="fab fa-facebook-f text-2xl"></i>
+                    </a>
+                    <a href="https://www.instagram.com/invites/contact/?igsh=zai0hb6vgzl&utm_content=vqivbme" target="_blank" 
+                       class="social-icon hover:text-primarylighter">
+                        <i class="fab fa-instagram text-2xl"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@pearlperfections4?_t=ZS-8vm5i0LssL2&_r=1" target="_blank" 
+                       class="social-icon hover:text-primarylighter">
+                        <i class="fab fa-tiktok text-2xl"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -361,12 +446,18 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
-                    <img src="IMG-20250420-WA0003.jpg" alt="PEARL PERFECTIONS" class="h-10">
+                    <img src="https://via.placeholder.com/90x90.png?text=Logo" alt="PEARL PERFECTIONS" class="h-10">
                 </div>
                 <div class="flex space-x-6">
-                    <a href="#" class="text-gray-600 hover:text-primary"><i class="fab fa-facebook-f text-xl"></i></a>
-                    <a href="#" class="text-gray-600 hover:text-primary"><i class="fab fa-instagram text-xl"></i></a>
-                    <a href="#" class="text-gray-600 hover:text-primary"><i class="fab fa-tiktok text-xl"></i></a>
+                    <a href="https://www.facebook.com/share/1C2kKCPiXH/" target="_blank" class="social-icon text-gray-600 hover:text-primary">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
+                    <a href="https://www.instagram.com/invites/contact/?igsh=zai0hb6vgzl&utm_content=vqivbme" target="_blank" class="social-icon text-gray-600 hover:text-primary">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@pearlperfections4?_t=ZS-8vm5i0LssL2&_r=1" target="_blank" class="social-icon text-gray-600 hover:text-primary">
+                        <i class="fab fa-tiktok text-xl"></i>
+                    </a>
                 </div>
             </div>
             <div class="mt-6 text-center text-sm text-gray-500">
@@ -464,6 +555,11 @@
                 menuButton.innerHTML = mobileMenu.classList.contains('open') ? '<i class="fas fa-times text-xl"></i>' : '<i class="fas fa-bars text-xl"></i>';
             }
         }
+
+        function toggleFAQ(element) {
+            element.classList.toggle('open');
+            const icon = element.querySelector('i');
+            icon.classList.toggle('fa-chevron-down');
+            icon.classList.toggle('fa-chevron-up');
+        }
     </script>
-</body>
-</html>
