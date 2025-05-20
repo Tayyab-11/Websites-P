@@ -33,6 +33,10 @@
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
         }
+        <!-- Loading Screen -->
+<div id="loader">
+    <img src="IMG-20250420-WA0003.jpg" alt="PEARL PERFECTIONS Loading...">
+</div>
         
         .hero-gradient {
             background: linear-gradient(135deg, #ce3e70 0%, #d97395 100%);
@@ -395,6 +399,11 @@
     </style>
 </head>
 <body class="bg-light">
+
+    <!-- Loading Screen -->
+<div id="loader">
+    <img src="IMG-20250420-WA0003.jpg" alt="PEARL PERFECTIONS Loading...">
+</div>
     <!-- WhatsApp Button -->
     <a href="https://wa.me/+92 3196285116" class="whatsapp-button" target="_blank">
         <i class="fab fa-whatsapp text-2xl"></i>
@@ -964,5 +973,13 @@
             }
         }
     </script>
+    <script>
+    // Wait for page to fully load, then fade out loader
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            document.getElementById('loader').classList.add('fade-out');
+        }, 1000); // 1-second delay (adjust as needed)
+    });
+</script>
 </body>
 </html>
